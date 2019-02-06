@@ -28,10 +28,13 @@ export default {
       );
     }
   },
-  computed: mapGetters({
-    registrations: "registrations",
-    total: "totalRegistrations"
-  })
+  computed: {
+    ...mapGetters({
+      registrations: "registrations",
+      total: "totalRegistrations"
+    })
+    // aditional computed properties
+  }
 };
 </script>
 
