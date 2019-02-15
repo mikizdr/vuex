@@ -59,8 +59,13 @@ export const store = new Vuex.Store({
                 context.commit('register', userId)
             }, 1);
         },
-        unregister(context, payload) {
-            context.commit('unregister', payload);
+        // 1st way
+        // unregister(context, payload) {
+        //     context.commit('unregister', payload);
+        // }
+        // 2nd way
+        unregister({ commit }, payload) {
+            commit('unregister', payload)
         }
     }
 });
