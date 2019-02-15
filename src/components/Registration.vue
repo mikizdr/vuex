@@ -2,7 +2,7 @@
   <div id="registration">
     <h3>Register here</h3>
     <hr>
-    <div class="row" v-for="user in users" :key="user.index">
+    <div class="row" v-for="(user, index) in users" :key="index">
       <h4>{{ user.name }}</h4>
       <button @click="registerUser(user)">Register</button>
     </div>
@@ -18,13 +18,8 @@ export default {
   },
   methods: {
     registerUser(user) {
-      const date = new Date();
-      user.registered = true;
-      this.$store.state.registrations.push({
-        userId: user.id,
-        name: user.name,
-        date: date.getMonth() + 1 + "/" + date.getDate()
-      });
+      // First way of calliing mutator from the store: calling a method as a string and passing parameter(s)
+      this.$store.commit("register", user.id);
     }
   }
 };
