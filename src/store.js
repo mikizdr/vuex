@@ -27,6 +27,7 @@ export const store = new Vuex.Store({
             return state.registrations.length;
         }
     },
+    // In mutations async code can't be run (that's why we use actions property)
     mutations: {
         register(state, userId) {
             const date = new Date();
@@ -48,6 +49,18 @@ export const store = new Vuex.Store({
             user.registered = false;
             const registration = state.registrations.find(registration => registration.userId == payload.userId);
             state.registrations.splice(state.registrations.indexOf(registration), 1);
+        }
+    },
+    // In actions we can run async code
+    actions: {
+        register(context, userId) {
+            // This will late registratio for 1 msec
+            setTimeout(() => {
+                context.commit('register', userId)
+            }, 1);
+        },
+        unregister(context, payload) {
+            context.commit('unregister', payload);
         }
     }
 });

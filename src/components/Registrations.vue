@@ -19,7 +19,12 @@ export default {
   methods: {
     unregister(registration) {
       // Second way to call mutator from store. Pass payloaod as an oject
-      this.$store.commit({
+      // this.$store.commit({
+      //   type: "unregister",
+      //   userId: registration.userId
+      // });
+      // Using actions property
+      this.$store.dispatch({
         type: "unregister",
         userId: registration.userId
       });

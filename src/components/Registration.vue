@@ -19,7 +19,9 @@ export default {
   methods: {
     registerUser(user) {
       // First way of calliing mutator from the store: calling a method as a string and passing parameter(s)
-      this.$store.commit("register", user.id);
+      // this.$store.commit("register", user.id);
+      // Using actions property
+      this.$store.dispatch("register", user.id);
     }
   }
 };
